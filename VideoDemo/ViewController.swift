@@ -39,21 +39,23 @@ class ViewController: UIViewController, UISearchBarDelegate {
         setupVideoView()
 
     }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        searchBar.becomeFirstResponder()
         searchBar.text = nil
     }
     func setupVideoView() {
 
-        videoView.frame = CGRect(x: 0, y: 55, width: view.frame.width, height: view.frame.height - 99 )
+        videoView.frame = CGRect(x: 0, y: 63, width: view.frame.width, height: view.frame.height - 99 )
         view.addSubview(videoView)
 
     }
 
     func setupSearchBar() {
-        searchBar.frame = CGRect(x: 8, y: 20, width: view.frame.width - 16, height: 30)
+        searchBar.frame = CGRect(x: 8, y: 27, width: view.frame.width - 16, height: 30)
         searchBar.backgroundImage = UIImage()
         searchBar.backgroundColor = .clear
         searchBar.placeholder = "Enter URL of video"
