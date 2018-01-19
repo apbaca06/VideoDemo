@@ -10,24 +10,6 @@ import UIKit
 import AVFoundation
 import AVKit
 
-//@objcMembers class VideoControl: NSObject {
-//    
-////    let url: URL
-//    
-//    var play: Bool = true
-//    
-//    @objc dynamic var play: Bool
-//    
-//    var mute: Bool = false
-//    
-//     @objc dynamic var mute: Bool
-//    
-////    init(_ url: URL) {
-////        self.url = url
-////    }
-//
-//}
-
 class ViewController: UIViewController, UISearchBarDelegate {
 
     let playerViewController = VideoViewController()
@@ -40,8 +22,6 @@ class ViewController: UIViewController, UISearchBarDelegate {
 
     let playButton = UIButton()
 
-    let video = VideoControl()
-
     var url: NSObject?
 
     override func viewDidLoad() {
@@ -51,7 +31,6 @@ class ViewController: UIViewController, UISearchBarDelegate {
         setupBottomView()
         setupSearchBar()
         addActionToButton()
-        video.observ
 
     }
 
@@ -107,13 +86,23 @@ class ViewController: UIViewController, UISearchBarDelegate {
     func addActionToButton() {
 
         playButton.addTarget(self, action: #selector(playButtonSelected), for: .touchUpInside)
-        muteButton.addTarget(self, action: <#T##Selector#>, for: .touchUpInside)
+        muteButton.addTarget(self, action: #selector(muteButtonSelected), for: .touchUpInside)
     }
 
     @objc func playButtonSelected() {
+        if playerViewController.play == true {
+            playerViewController.play = false
+        } else {
+            playerViewController.play = true
+        }
+    }
 
-        video.play = false
-        playerViewController.player?.pause()
+    @objc func muteButtonSelected() {
+        if playerViewController.mute == false {
+            playerViewController.mute = true
+        } else {
+            playerViewController.mute = false
+        }
     }
 
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
