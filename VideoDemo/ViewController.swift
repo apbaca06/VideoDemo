@@ -60,6 +60,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         searchBar.tintColor = UIColor(red: 122/255.0, green: 121/255.0, blue: 123/255.0, alpha: 1)
         searchBar.returnKeyType = .done
         searchBar.delegate = self
+
 //        let offset = UIOffset(horizontal: (searchBar.frame.width - placeholderWidth) / 2, vertical: 0)
 //        searchBar.setPositionAdjustment(offset, for: .search)
         view.addSubview(searchBar)
@@ -70,8 +71,8 @@ class ViewController: UIViewController, UISearchBarDelegate {
         bottomView.backgroundColor = UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.6)
         view.addSubview(bottomView)
 
-        playButton.frame = CGRect(x: 0, y: 0, width: 39, height: 19)
-        playButton.frame = CGRect(x: 0, y: 0, width: 39, height: 19)
+        playButton.frame = CGRect(x: 0, y: 0, width: 50, height: 19)
+        playButton.frame = CGRect(x: 0, y: 0, width: 50, height: 19)
         bottomView.addSubview(playButton)
         bottomView.addSubview(muteButton)
 
@@ -79,15 +80,22 @@ class ViewController: UIViewController, UISearchBarDelegate {
         muteButton.translatesAutoresizingMaskIntoConstraints = false
 
         playButton.setTitle("Play", for: .normal)
+        playButton.titleLabel?.minimumScaleFactor = 5
+        playButton.titleLabel?.lineBreakMode = .byTruncatingTail
+        playButton.titleLabel?.numberOfLines = 0
+        playButton.titleLabel?.adjustsFontSizeToFitWidth = true
         playButton.setTitleColor(.white, for: .normal)
         playButton.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor, constant: 20).isActive = true
         playButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -12).isActive = true
-        playButton.widthAnchor.constraint(equalToConstant: 70).isActive = true
+        playButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         playButton.heightAnchor.constraint(equalToConstant: 19).isActive = true
 
         muteButton.setTitle("Mute", for: .normal)
         muteButton.setTitleColor(.white, for: .normal)
-
+        muteButton.titleLabel?.minimumScaleFactor = 5
+        muteButton.titleLabel?.lineBreakMode = .byTruncatingTail
+        muteButton.titleLabel?.numberOfLines = 0
+        muteButton.titleLabel?.adjustsFontSizeToFitWidth = true
         muteButton.rightAnchor.constraint(equalTo: bottomView.rightAnchor, constant: -20).isActive = true
         muteButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -12).isActive = true
         muteButton.widthAnchor.constraint(equalToConstant: 50).isActive = true

@@ -29,7 +29,6 @@ class VideoViewController: AVPlayerViewController {
                 return
         }
 
-        parentViewController.playButton
         if keyPath == "play" {
             guard let playChange = change,
                   let playOption = playChange[.newKey] as? Bool
