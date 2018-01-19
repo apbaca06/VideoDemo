@@ -167,10 +167,4 @@ class ViewController: UIViewController, UISearchBarDelegate {
 
     }
 
-    func keyboardWillDismiss() {
-        if searchBar.text != nil {
-
-        }
-    }
-
 }
