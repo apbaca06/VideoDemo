@@ -8,8 +8,29 @@
 
 import UIKit
 import AVFoundation
+import AVKit
+
+//@objcMembers class VideoControl: NSObject {
+//    
+////    let url: URL
+//    
+//    var play: Bool = true
+//    
+//    @objc dynamic var play: Bool
+//    
+//    var mute: Bool = false
+//    
+//     @objc dynamic var mute: Bool
+//    
+////    init(_ url: URL) {
+////        self.url = url
+////    }
+//
+//}
 
 class ViewController: UIViewController, UISearchBarDelegate {
+
+    let playerViewController = VideoViewController()
 
     let searchBar = UISearchBar()
 
@@ -19,13 +40,25 @@ class ViewController: UIViewController, UISearchBarDelegate {
 
     let playButton = UIButton()
 
+    let video = VideoControl()
+
+    var url: NSObject?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 8/255.0, green: 21/255.0, blue: 25/255.0, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
         setupBottomView()
         setupSearchBar()
+        addActionToButton()
+        video.observ
 
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        searchBar.becomeFirstResponder()
+        searchBar.text = nil
     }
 
     func setupSearchBar() {
@@ -34,6 +67,8 @@ class ViewController: UIViewController, UISearchBarDelegate {
         searchBar.backgroundColor = .clear
         searchBar.placeholder = "Enter URL of video"
         searchBar.tintColor = UIColor(red: 122/255.0, green: 121/255.0, blue: 123/255.0, alpha: 1)
+        searchBar.returnKeyType = .done
+        searchBar.delegate = self
 //        let offset = UIOffset(horizontal: (searchBar.frame.width - placeholderWidth) / 2, vertical: 0)
 //        searchBar.setPositionAdjustment(offset, for: .search)
         view.addSubview(searchBar)
@@ -69,10 +104,59 @@ class ViewController: UIViewController, UISearchBarDelegate {
 
     }
 
+    func addActionToButton() {
+
+        playButton.addTarget(self, action: #selector(playButtonSelected), for: .touchUpInside)
+        muteButton.addTarget(self, action: <#T##Selector#>, for: .touchUpInside)
+    }
+
+    @objc func playButtonSelected() {
+
+        video.play = false
+        playerViewController.player?.pause()
+    }
+
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        searchBar.becomeFirstResponder()
 
         return true
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        guard let urlString = searchBar.text?.lowercased(),
+              let url = URL(string: urlString)
+            else {
+                let alert = UIAlertController(title: "Unable to transform as URL", message: "please insert correct URL", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(okAction)
+                present(alert, animated: true, completion: nil)
+                return }
+
+        loadVideo(inputUrl: url)
+
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.text = nil
+    }
+
+    func loadVideo(inputUrl: URL) {
+
+        let videoPlayer = AVPlayer(url: inputUrl)
+
+        playerViewController.player = videoPlayer
+        playerViewController.view.backgroundColor = .clear
+//        playerViewController.showsPlaybackControls = false
+
+        self.present(playerViewController, animated: false, completion: playerViewController.player?.play)
+
+    }
+
+    func keyboardWillDismiss() {
+        if searchBar.text != nil {
+
+        }
     }
 
 }

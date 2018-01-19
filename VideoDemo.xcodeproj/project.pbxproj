@@ -11,6 +11,7 @@
 		374DD5AE2011B9EC0098707E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DD5AD2011B9EC0098707E /* ViewController.swift */; };
 		374DD5B32011B9EC0098707E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 374DD5B22011B9EC0098707E /* Assets.xcassets */; };
 		374DD5B62011B9EC0098707E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 374DD5B42011B9EC0098707E /* LaunchScreen.storyboard */; };
+		374DD5BF2011D9850098707E /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374DD5BE2011D9840098707E /* VideoViewController.swift */; };
 		9A4ADF95C901C0510CD6C59D /* Pods_VideoDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2771C3DA131B3D88734730F8 /* Pods_VideoDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 		374DD5B22011B9EC0098707E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		374DD5B52011B9EC0098707E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		374DD5B72011B9EC0098707E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		374DD5BE2011D9840098707E /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		C27314062F89CF94738CB52D /* Pods-VideoDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-VideoDemo/Pods-VideoDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +72,7 @@
 			children = (
 				374DD5AB2011B9EC0098707E /* AppDelegate.swift */,
 				374DD5AD2011B9EC0098707E /* ViewController.swift */,
+				374DD5BE2011D9840098707E /* VideoViewController.swift */,
 				374DD5B22011B9EC0098707E /* Assets.xcassets */,
 				374DD5B42011B9EC0098707E /* LaunchScreen.storyboard */,
 				374DD5B72011B9EC0098707E /* Info.plist */,
@@ -226,6 +229,7 @@
 			files = (
 				374DD5AE2011B9EC0098707E /* ViewController.swift in Sources */,
 				374DD5AC2011B9EC0098707E /* AppDelegate.swift in Sources */,
+				374DD5BF2011D9850098707E /* VideoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +360,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L8HW62WTEC;
 				INFOPLIST_FILE = VideoDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hsin.chen.VideoDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -371,7 +377,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L8HW62WTEC;
 				INFOPLIST_FILE = VideoDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hsin.chen.VideoDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
