@@ -16,6 +16,8 @@ class ViewController: UIViewController, UISearchBarDelegate {
 
     let searchBar = UISearchBar()
 
+    let videoView = UIView()
+
     let bottomView = UIView()
 
     let muteButton = UIButton()
@@ -28,16 +30,27 @@ class ViewController: UIViewController, UISearchBarDelegate {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 8/255.0, green: 21/255.0, blue: 25/255.0, alpha: 1)
         view.translatesAutoresizingMaskIntoConstraints = false
+
+        self.addChildViewController(playerViewController)
+
         setupBottomView()
         setupSearchBar()
         addActionToButton()
+        setupVideoView()
 
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        searchBar.becomeFirstResponder()
+//        searchBar.becomeFirstResponder()
         searchBar.text = nil
+    }
+    func setupVideoView() {
+
+        videoView.frame = CGRect(x: 0, y: 55, width: view.frame.width, height: view.frame.height - 99 )
+        videoView.backgroundColor = .red
+        view.addSubview(videoView)
+
     }
 
     func setupSearchBar() {
@@ -132,13 +145,18 @@ class ViewController: UIViewController, UISearchBarDelegate {
 
     func loadVideo(inputUrl: URL) {
 
+        searchBar.text = nil
+
         let videoPlayer = AVPlayer(url: inputUrl)
 
         playerViewController.player = videoPlayer
         playerViewController.view.backgroundColor = .clear
+        playerViewController.view.frame = self.videoView.bounds
+        self.videoView.addSubview(playerViewController.view)
+
 //        playerViewController.showsPlaybackControls = false
 
-        self.present(playerViewController, animated: false, completion: playerViewController.player?.play)
+//        self.present(playerViewController, animated: false, completion: playerViewController.player?.play)
 
     }
 
