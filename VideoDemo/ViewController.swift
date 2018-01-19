@@ -48,7 +48,6 @@ class ViewController: UIViewController, UISearchBarDelegate {
     func setupVideoView() {
 
         videoView.frame = CGRect(x: 0, y: 55, width: view.frame.width, height: view.frame.height - 99 )
-        videoView.backgroundColor = .red
         view.addSubview(videoView)
 
     }
@@ -83,15 +82,15 @@ class ViewController: UIViewController, UISearchBarDelegate {
         playButton.setTitleColor(.white, for: .normal)
         playButton.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor, constant: 20).isActive = true
         playButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -12).isActive = true
-        playButton.widthAnchor.constraint(equalToConstant: 39).isActive = true
+        playButton.widthAnchor.constraint(equalToConstant: 70).isActive = true
         playButton.heightAnchor.constraint(equalToConstant: 19).isActive = true
 
         muteButton.setTitle("Mute", for: .normal)
         muteButton.setTitleColor(.white, for: .normal)
 
-        muteButton.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor, constant: -20).isActive = true
+        muteButton.rightAnchor.constraint(equalTo: bottomView.rightAnchor, constant: -20).isActive = true
         muteButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -12).isActive = true
-        muteButton.widthAnchor.constraint(equalToConstant: 39).isActive = true
+        muteButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         muteButton.heightAnchor.constraint(equalToConstant: 19).isActive = true
 
     }
@@ -153,10 +152,10 @@ class ViewController: UIViewController, UISearchBarDelegate {
         playerViewController.view.backgroundColor = .clear
         playerViewController.view.frame = self.videoView.bounds
         self.videoView.addSubview(playerViewController.view)
+        playerViewController.player?.play()
+        playerViewController.showsPlaybackControls = false
 
-//        playerViewController.showsPlaybackControls = false
-
-//        self.present(playerViewController, animated: false, completion: playerViewController.player?.play)
+        playButton.setTitle("Pause", for: .normal)
 
     }
 
